@@ -3,22 +3,19 @@
 // Return true if and only if the given tree is univalued.
 
 const isUnivalTree = function(root) {
-    const values = [];
-
-    const search = function(node) {
+    const search = function(node, value) {
         if (node) {
-            values.push(node.val)
-            search(node.left);
-            search(node.right);
-        }
+            let univalueLeft = search(node.left, node.value);
+            let univalueRight = search(node.right, node.value);
+            
+            if (node.val !== value) {
+                return false
+            } else {
+                return univalueLeft && univalueRight
+            }
+        } else {
+            return true
     }
-
-    const check = function(arr) {
-        let target = arr[0]
-        let result = arr.every(num => num === target)
-        return result
-    }
-    search(root)
-    return check(values)
+    return search(root, root.val)
 };
 
