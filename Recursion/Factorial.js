@@ -9,5 +9,3 @@ const factorial = function(n) {
         return result
     }
 }
-
-console.log(factorial(4))
