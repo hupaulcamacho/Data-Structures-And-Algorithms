@@ -2,10 +2,8 @@ const merge = function(left, right) {
     let resultArr = []
     let l = 0
     let r = 0
-    // console.log(left)
-    // console.log(right)
 
-    while(l < left.length && r < right.lenth) {
+    while(l < left.length && r < right.length) {
         if(left[l] < right[r]) {
             resultArr.push(left[l])
             l++
@@ -15,10 +13,8 @@ const merge = function(left, right) {
         }
 
     }
-    resultArr.push(left[l]);
-    resultArr.push(right[r]);
-    // console.log(resultArr)
-    return resultArr
+
+    return resultArr.concat(left.slice(l)).concat(right.slice(r));
 }
 
 
@@ -29,11 +25,8 @@ const mergeSort = function(arr) {
     let left = arr.slice(0, mid)
     let right = arr.slice(mid)
 
-    let result = merge(mergeSort(left), mergeSort(right))
-
-    console.log(merge(mergeSort(left), mergeSort(right)))
-    console.log(arr)
-    return result
+    // console.log(merge(mergeSort(left), mergeSort(right)))
+    return merge(mergeSort(left), mergeSort(right))
 }
 
-mergeSort([1, 9, 3, 5, 4, 7])
+console.log(mergeSort([1, 9, 3, 5, 4, 7]))

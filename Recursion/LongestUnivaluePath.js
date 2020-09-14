@@ -11,11 +11,11 @@ const longestUnivaluePath = function(root) {
         let maxRight = 0;
 
         if (node.left !== null && node.left.value === node.val) {
-            maxLeft = 1 + left
+            maxLeft = left + 1
         }
 
         if (node.right !== null && node.right.value === node.val) {
-            maxRight = 1 + right
+            maxRight = right + 1
         }
         
         result = Math.max(result, maxLeft + maxRight)
